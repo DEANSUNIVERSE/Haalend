@@ -1,0 +1,285 @@
+<html lang="de" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>𝕯𝖊𝖆𝖓'𝖘 𝖀𝖓𝖎𝖛𝖊𝖗𝖘𝖊 🍃 — Smart Pilot OS &amp; AI Automation</title>
+<meta name="description" content="Smart Pilot OS: Intelligente Webseiten, CRM-Systeme und KI-Automatisierung für Unternehmen.">
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Orbitron:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+:root {
+--emerald-glow: rgba(16, 185, 129, 0.5);
+--cursor-x: 50%;
+--cursor-y: 50%;
+}
+body { font-family: 'Inter', sans-serif; }
+h1, h2, h3, h4, .font-orbitron { font-family: 'Orbitron', sans-serif; }
+.font-mono { font-family: 'JetBrains Mono', monospace; }
+@keyframes drift {
+0% { transform: translate(0px, 0px) scale(1); opacity: 0.3; }
+33% { transform: translate(20px, -30px) scale(1.05); opacity: 0.4; }
+66% { transform: translate(-15px, 15px) scale(0.95); opacity: 0.3; }
+100% { transform: translate(0px, 0px) scale(1); opacity: 0.3; }
+}
+.animate-drift { animation: drift 15s ease-in-out infinite; }
+.animation-delay-2000 { animation-delay: 2s; }
+.animation-delay-4000 { animation-delay: 4s; }
+@keyframes fadeSlideUp {
+0% { opacity: 0; transform: translateY(15px); }
+100% { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up-1 { animation: fadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; animation-delay: 0.1s; opacity: 0; }
+.animate-fade-up-2 { animation: fadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; animation-delay: 0.2s; opacity: 0; }
+.animate-fade-up-3 { animation: fadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; animation-delay: 0.3s; opacity: 0; }
+.animate-fade-up-4 { animation: fadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; animation-delay: 0.4s; opacity: 0; }
+@keyframes gentleScaleReveal {
+0% { opacity: 0; transform: scale(0.98); }
+100% { opacity: 1; transform: scale(1); }
+}
+.animate-reveal-image { animation: gentleScaleReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+.mouse-spotlight {
+background: radial-gradient(
+1000px circle at var(--cursor-x) var(--cursor-y),
+rgba(16, 185, 129, 0.04),
+transparent 50%
+);
+z-index: -49;
+}
+.glass-panel {
+background: rgba(9, 9, 11, 0.4);
+backdrop-filter: blur(16px);
+border: 1px solid rgba(255, 255, 255, 0.05);
+box-shadow: 0 0 0 1px rgba(0,0,0,0.2);
+}
+.bg-noise {
+background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill {
+-webkit-text-fill-color: white;
+-webkit-box-shadow: 0 0 0px 1000px #09090b inset;
+transition: background-color 5000s ease-in-out 0s;
+}
+details > summary { list-style: none; }
+details > summary::-webkit-details-marker { display: none; }
+.chat-scroll::-webkit-scrollbar { width: 4px; }
+.chat-scroll::-webkit-scrollbar-track { background: transparent; }
+.chat-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
+.chat-scroll::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+.typing-dot { animation: typing 1.4s infinite ease-in-out both; }
+.typing-dot:nth-child(1) { animation-delay: -0.32s; }
+.typing-dot:nth-child(2) { animation-delay: -0.16s; }
+@keyframes typing { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
+.chat-slide-enter { opacity: 0; transform: translateY(20px) scale(0.95); }
+.chat-slide-enter-active { opacity: 1; transform: translateY(0) scale(1); transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+.chat-slide-exit { opacity: 1; transform: translateY(0) scale(1); }
+.chat-slide-exit-active { opacity: 0; transform: translateY(20px) scale(0.95); transition: all 0.2s ease-in; }
+</style>
+<script>
+tailwind.config = {
+theme: { extend: {} },
+plugins: [
+function({ addUtilities }) {
+const rotateXUtilities = {};
+const rotateValues = [0, 5, 10, 15, 20, 30, 45, 75];
+rotateValues.forEach((value) => {
+rotateXUtilities[`.rotate-x-${value}`] = { '--tw-rotate-x': `${value}deg` };
+if (value !== 0) rotateXUtilities[`.-rotate-x-${value}`] = { '--tw-rotate-x': `-${value}deg` };
+});
+addUtilities({ ...rotateXUtilities });
+}
+]
+};
+</script>
+</head>
+<body class="min-h-screen antialiased bg-[#020405] text-slate-300 selection:bg-emerald-500/20 selection:text-emerald-50 relative overflow-x-hidden" id="main-body">
+
+<div class="fixed inset-0 -z-50 overflow-hidden pointer-events-none">
+    <div class="absolute inset-0 bg-[#020405]"></div>
+    <div class="absolute top-[-10%] left-[10%] w-[900px] h-[900px] bg-emerald-950/20 rounded-full mix-blend-screen filter blur-[150px] animate-drift"></div>
+    <div class="absolute bottom-[10%] right-[0%] w-[800px] h-[800px] bg-[#051a14] rounded-full mix-blend-screen filter blur-[150px] animate-drift animation-delay-2000"></div>
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
+    <div class="absolute inset-0 mouse-spotlight transition-opacity duration-500"></div>
+    <div class="absolute inset-0 bg-noise opacity-[0.35] mix-blend-overlay"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,rgba(2,4,5,0.6)_100%)]"></div>
+</div>
+
+  <header class="fixed top-0 w-full z-50 transition-all duration-300 border-b border-white/5 bg-[#020405]/70 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <a href="#" class="inline-flex items-center gap-3 group">
+            <span class="font-orbitron font-semibold tracking-tight text-base text-white/90">𝕯𝖊𝖆𝖓'𝖘 𝖀𝖓𝖎𝖛𝖊𝖗𝖘𝖊 <span class="text-emerald-500">🍃</span></span>
+        </a>
+        <nav class="hidden md:flex items-center gap-1 p-1.5 rounded-full border border-white/5 bg-white/[0.02] backdrop-blur-xl">
+          <a href="#" class="px-4 py-1.5 text-[11px] font-medium text-white bg-white/5 rounded-full">Übersicht</a>
+          <a href="#dashboard" class="px-4 py-1.5 text-[11px] font-medium text-neutral-400 hover:text-white transition-colors">Plattform</a>
+          <a href="#features" class="px-4 py-1.5 text-[11px] font-medium text-neutral-400 hover:text-white transition-colors">Module</a>
+          <a href="#founder" class="px-4 py-1.5 text-[11px] font-medium text-neutral-400 hover:text-white transition-colors">Vision</a>
+        </nav>
+        <div class="flex items-center gap-4">
+          <a href="#booking" class="hidden sm:inline-flex group relative h-9 items-center justify-center overflow-hidden rounded bg-emerald-500/5 px-5 border border-emerald-500/20 text-[10px] uppercase tracking-widest font-semibold font-orbitron text-emerald-400 hover:bg-emerald-500/10">
+             Zugang Starten
+          </a>
+        </div>
+    </div>
+  </header>
+
+  <section class="lg:pt-48 lg:pb-32 pt-32 pb-20 relative overflow-visible">
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-12 items-center">
+        <div class="flex flex-col items-center lg:items-start text-center lg:text-left z-20">
+            <div class="animate-fade-up-1 inline-flex items-center gap-2.5 px-3 py-1.5 rounded border border-emerald-500/20 bg-emerald-950/10 text-emerald-500 text-[9px] uppercase tracking-[0.25em] font-semibold font-mono mb-8 backdrop-blur-md">
+                <span class="relative flex h-1.5 w-1.5">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-40"></span>
+                  <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+                </span>
+                Dean's Universe // System Aktiv v2.4
+            </div>
+            <h1 class="animate-fade-up-2 text-5xl sm:text-7xl font-semibold tracking-tight text-white leading-[1.05] mb-8 font-orbitron">
+                KI-Automatisierung &amp; <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-emerald-300 to-teal-200">Smart Pilot OS</span>
+            </h1>
+            <p class="animate-fade-up-3 text-lg text-neutral-400 leading-relaxed max-w-xl mb-10 font-light tracking-wide">
+                Integrieren Sie autonome KI-Agenten und WebGL-Schnittstellen für maximales Unternehmenswachstum, konzipiert von Dean.
+            </p>
+            <div class="animate-fade-up-4 flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+                <a href="#booking" class="w-full sm:w-auto group relative inline-flex h-12 items-center justify-center bg-white text-black px-8 font-semibold rounded-sm text-[11px] uppercase tracking-widest font-orbitron hover:bg-emerald-50 transition-all">
+                    Jetzt Kalibrieren
+                </a>
+                <a href="#dashboard" class="w-full sm:w-auto inline-flex h-12 items-center justify-center px-8 font-medium text-neutral-300 border border-white/10 hover:bg-white/[0.03] rounded-sm text-[11px] uppercase tracking-widest font-orbitron">
+                    Dashboard Ansehen
+                </a>
+            </div>
+        </div>
+        <div class="relative lg:h-[640px] w-full flex items-center justify-center animate-reveal-image">
+            <div class="relative z-10 w-full max-w-[500px] aspect-square lg:aspect-[4/5] group">
+                <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[300px] h-[300px] bg-emerald-500/10 rounded-full blur-[80px]"></div>
+                <div class="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl border border-white/5 bg-[#050505]">
+                    <img src="https://i.pinimg.com/1200x/e2/e6/ca/e2e6ca2746c9385feaa1848ec9952472.jpg" alt="AI Pilot Interface" class="w-full h-full object-cover filter brightness-[0.85] contrast-[1.15]">
+                    <div class="absolute bottom-6 left-6 right-6 p-4 glass-panel rounded border border-white/5 flex items-center justify-between z-30">
+                        <div class="flex items-center gap-3">
+                            <span class="relative flex h-2 w-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                            </span>
+                            <span class="text-[10px] font-mono tracking-wider text-emerald-100/80">NEURAL LINK AKTIV</span>
+                        </div>
+                        <span class="text-[10px] font-mono text-white/60 tracking-wider">98.4% EFFIZIENZ</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="dashboard" class="py-24 relative border-t border-white/5 bg-[#030607]/50 backdrop-blur-sm">
+      <div class="max-w-7xl mx-auto px-6 relative z-10">
+          <div class="text-center mb-16">
+              <h2 class="text-sm font-bold text-emerald-500 uppercase tracking-[0.2em] font-orbitron mb-2">Zentrale Steuerung</h2>
+              <h3 class="text-3xl md:text-4xl font-bold text-white font-orbitron">Echtzeit-Monitor für Geschäftsprozesse</h3>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-[#09090b]/80 backdrop-blur-xl p-2 shadow-2xl overflow-hidden">
+              <div class="grid grid-cols-12 gap-1 bg-[#020405] border border-white/5 rounded-xl p-1">
+                  <div class="col-span-12 lg:col-span-2 hidden lg:flex flex-col gap-1 p-2 border-r border-white/5">
+                      <div class="h-10 flex items-center px-4 rounded bg-emerald-500/10 text-emerald-400 text-xs font-bold border border-emerald-500/20 mb-4">STATUS</div>
+                      <div class="h-8 flex items-center px-4 rounded hover:bg-white/5 text-neutral-400 text-xs cursor-pointer">Übersicht</div>
+                      <div class="h-8 flex items-center px-4 rounded hover:bg-white/5 text-neutral-400 text-xs cursor-pointer">Analysen</div>
+                      <div class="h-8 flex items-center px-4 rounded hover:bg-white/5 text-neutral-400 text-xs cursor-pointer">Agenten</div>
+                  </div>
+                  <div class="col-span-12 lg:col-span-10 p-4 lg:p-6">
+                      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                          <div class="p-5 rounded-lg bg-[#0C0C0E] border border-white/5">
+                              <span class="text-xs text-neutral-500 font-mono uppercase">Aktive Leads</span>
+                              <div class="text-2xl font-bold text-white font-orbitron mt-2">2,845</div>
+                          </div>
+                          <div class="p-5 rounded-lg bg-[#0C0C0E] border border-white/5">
+                              <span class="text-xs text-neutral-500 font-mono uppercase">Conversion Rate</span>
+                              <div class="text-2xl font-bold text-white font-orbitron mt-2">4.2%</div>
+                          </div>
+                          <div class="p-5 rounded-lg bg-[#0C0C0E] border border-white/5">
+                              <span class="text-xs text-neutral-500 font-mono uppercase">Umsatz Prognose</span>
+                              <div class="text-2xl font-bold text-white font-orbitron mt-2">€142k</div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <section id="features" class="py-24 relative">
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="mb-12">
+            <h2 class="text-sm font-bold text-emerald-500 uppercase tracking-[0.2em] font-orbitron mb-2">Leistungsübersicht</h2>
+            <h3 class="text-3xl font-bold text-white font-orbitron">Ganzheitliche KI- &amp; CRM-Systeme</h3>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="group p-8 rounded-xl border border-white/10 bg-[#09090b]/80">
+                <h4 class="text-lg font-bold text-white mb-3 font-orbitron">High-End Webdesign</h4>
+                <p class="text-sm text-neutral-400 leading-relaxed">Conversion-optimierte Landingpages für maximale Leistung.</p>
+            </div>
+            <div class="group p-8 rounded-xl border border-white/10 bg-[#09090b]/80">
+                <h4 class="text-lg font-bold text-white mb-3 font-orbitron">Intelligentes CRM</h4>
+                <p class="text-sm text-neutral-400 leading-relaxed">Zentrales Lead-Management-System mit automatisierter Scoring-Technologie.</p>
+            </div>
+            <div class="group p-8 rounded-xl border border-white/10 bg-[#09090b]/80">
+                <h4 class="text-lg font-bold text-white mb-3 font-orbitron">KI-Agenten</h4>
+                <p class="text-sm text-neutral-400 leading-relaxed">24/7 Support-Bots und Agenten, die eigenständig Termine buchen.</p>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <section id="booking" class="py-24 relative border-t border-white/5 bg-[#020405]/50 backdrop-blur-sm">
+    <div class="max-w-6xl mx-auto px-6 relative z-10">
+        <div class="text-center mb-16">
+            <h2 class="text-sm font-bold text-emerald-500 uppercase tracking-[0.2em] font-orbitron mb-2">Termin vereinbaren</h2>
+            <h3 class="text-3xl md:text-5xl font-bold text-white font-orbitron">Strategiegespräch für Automatisierung</h3>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-[#09090b] shadow-2xl overflow-hidden flex flex-col lg:flex-row min-h-[500px]">
+            <div class="w-full lg:w-5/12 p-8 border-b lg:border-b-0 lg:border-r border-white/5 bg-[#0C0C0C]/50">
+                <h4 class="text-white font-orbitron font-semibold mb-6">Oktober 2026</h4>
+                <div class="grid grid-cols-7 gap-2 text-center text-xs text-neutral-400 mb-6">
+                    <span>Mo</span><span>Di</span><span>Mi</span><span>Do</span><span>Fr</span><span>Sa</span><span>So</span>
+                </div>
+                <div class="grid grid-cols-7 gap-2 text-center text-sm text-white">
+                    <span class="py-2 bg-emerald-500 text-black font-bold rounded">11</span>
+                </div>
+            </div>
+            <div class="w-full lg:w-7/12 p-8 lg:p-10 flex flex-col justify-center bg-[#09090b]">
+                <form class="space-y-4" onsubmit="event.preventDefault(); alert('Termin erfolgreich angefragt!');">
+                    <div>
+                        <label class="text-xs text-neutral-400">Name</label>
+                        <input type="text" class="w-full bg-white/5 border border-white/10 rounded px-4 py-2 text-white text-sm mt-1" required>
+                    </div>
+                    <div>
+                        <label class="text-xs text-neutral-400">E-Mail</label>
+                        <input type="email" class="w-full bg-white/5 border border-white/10 rounded px-4 py-2 text-white text-sm mt-1" required>
+                    </div>
+                    <button type="submit" class="w-full bg-emerald-500 text-black font-bold py-3 rounded text-xs uppercase font-orbitron tracking-widest mt-4">Termin Bestätigen</button>
+                </form>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <footer class="border-t border-white/5 bg-[#020405] pt-16 pb-8 text-sm">
+      <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p class="text-xs text-neutral-500 font-mono">𝕯𝖊𝖆𝖓'𝖘 𝖀𝖓𝖎𝖛𝖊𝖗𝖘𝖊 🍃 &copy; 2026 DEAN. ALL RIGHTS RESERVED.</p>
+          <div class="flex items-center gap-4 font-mono text-xs">
+              <a href="https://github.com/DEANSUNIVERSE" target="_blank" class="hover:text-emerald-400">GITHUB</a>
+              <a href="mailto:epicgameglider@gmail.com" class="hover:text-emerald-400">DISPATCH</a>
+          </div>
+      </div>
+  </footer>
+  <script>lucide.createIcons();</script>
+</body>
+</html>
